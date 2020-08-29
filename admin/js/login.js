@@ -26,9 +26,10 @@ $(function () {
           // $('.modal-body >p').text('登陆成功');
           $('#myModal').on('hidden.bs.modal', function () {
             window.location.href = './index.html';
+            window.localStorage.setItem('token', data.token)
           })
         }
       },
-    })
+    });
   })
 })
