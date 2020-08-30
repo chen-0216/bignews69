@@ -5,7 +5,7 @@ $(function () {
 
     $.ajax({
       type: 'post',
-      url: 'http://localhost:8080/api/v1/admin/user/login',
+      url: bigNews.user_login,
       data: $(this).serialize(),
       beforeSend: function () {
         var $name = $('.input_txt');

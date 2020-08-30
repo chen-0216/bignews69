@@ -1,7 +1,7 @@
 $(function () {
   $.ajax({
     type: 'get',
-    url: 'http://localhost:8080/api/v1/admin/user/info',
+    url: bigNews.user_info,
     success: function (info) {
       // console.log(info);
       if (info.code === 200) {
