@@ -69,7 +69,8 @@
                         <td class="text-center">已发布</td>
                         <td class="text-center">
                             <a href="article_edit.html" class="btn btn-default btn-xs">编辑</a>
-                            <a href="javascript:void(0);" class="btn btn-danger btn-xs delete">删除</a>
+                            <button class="btn btn-danger btn-xs delete" data-toggle="modal"
+                                data-target="#delModal">删除</button>
                         </td>
                     </tr>
                 </tbody>
@@ -80,6 +81,24 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="delModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">温馨提示...</h4>
+                </div>
+                <div class="modal-body">
+                    <p>确定删除这条数据吗？</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取 消</button>
+                    <button type="button" class="btn btn-primary" id="sureDel">确 定</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
     <script type="text/html" id="option">
         <option value="">所有分类</option>
         {{each data v i}}
@@ -97,7 +116,8 @@
             <td class="text-center">{{v.state}}</td>
             <td class="text-center">
                 <a href="article_edit.html" class="btn btn-default btn-xs">编辑</a>
-                <a href="javascript:void(0);" class="btn btn-danger btn-xs delete">删除</a>
+                <button class="btn btn-danger btn-xs delete" data-toggle="modal"
+                data-target="#delModal" id="{{v.id}}">删除</button>
             </td>
         </tr>
         {{/each}}
