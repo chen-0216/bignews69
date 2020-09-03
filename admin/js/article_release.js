@@ -18,6 +18,7 @@ $(function () {
     e.preventDefault();
     console.log(e.target);
     var data = new FormData($('#form')[0]);
+    data.append('content', editor.txt.html());
     if ($(e.target).hasClass('btn-release')) {
       data.append('state', '已发布');
     } else {
@@ -37,5 +38,17 @@ $(function () {
         }
       }
     })
-  })
-})
+  });
+  jeDate("#testico", {
+    format: "YYYY-MM-DD",
+    isTime: false,
+    onClose: false,
+    zIndex: 99999,
+    minDate: "2014-09-19 00:00:00"
+  });
+  var E = window.wangEditor
+  var editor = new E('#editor')
+  // 或者 var editor = new E( document.getElementById('editor') )
+  editor.create();
+  editor.txt.html('<p></p>')
+});
