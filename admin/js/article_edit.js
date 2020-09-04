@@ -33,7 +33,7 @@ $(function () {
     format: "YYYY-MM-DD",
     isTime: false,
     onClose: false,
-    zIndex: 9999,
+    zIndex: 99999,
     minDate: "2014-09-19 00:00:00"
   });
   var E = window.wangEditor
