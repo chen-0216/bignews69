@@ -10,8 +10,12 @@
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/jquery.pagination.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
-    <script type="text/javascript" src="js/jquery.pagination.min.js"></script>
+    <script type="text/javascript" src="./libs/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="./libs/jquery.pagination.min.js"></script>
+    <script src="./libs/template-web.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/http.js"></script>
+    <script src="./js/list.js"></script>
 </head>
 
 <body>
@@ -135,8 +139,8 @@
                 </div>
             </div>
 
-            <div id="pagination" class="page"></div>
-            <script>
+            <!-- <div id="pagination" class="page"></div> -->
+            <!-- <script>
                 $(function () {
                     $("#pagination").pagination({
                         currentPage: 2,
@@ -146,13 +150,13 @@
                         }
                     });
                 });
-            </script>
+            </script> -->
 
         </div>
         <div class="right_con setfl">
             <div class="common_wrap">
                 <h3><i class="fa fa-bar-chart"></i> 一周热门排行</h3>
-                <ul class="content_list">
+                <ul class="content_list hotrank_list">
                     <li><span class="first">1</span><a href="#">神奇的水滴摄影，泡泡中的世界泡泡中的世界</a></li>
                     <li><span class="second">2</span><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
                     <li><span class="third">3</span><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
@@ -225,8 +229,60 @@
         <p>CopyRight © 2019 深圳大事件信息技术股份有限公司 All Rights Reserved</p>
         <p>电话：0755-****888 粤ICP备*******8号</p>
     </div>
-    <!-- 导包template -->
-    <script src="./js/template-web.js"></script>
+
+    <script type="text/html" id="category">
+        {{each data v i}}
+        <li><a href="./list.html?id={{v.id}}">{{v.name}}</a></li>
+        {{/each}}
+    </script>
+
+    <script type="text/html" id="hotrank_list">
+        {{each data v i}}
+        {{if i===0}}
+        <li><span class="first">1</span>
+        {{else if i===1}}
+        <li><span class="second">2</span>
+        {{else if i===2}}
+        <li><span class="third">3</span>
+        {{else}}
+        <li><span>{{i+1}}</span>
+        {{/if}}
+        <a href="./article.html?id={{v.id}}">{{v.title}}</a></li>
+        {{/each}}
+    </script>
+
+    <script type="text/html" id="latest_comment">
+        {{each data v i}}
+        <li>
+            <span>{{v.author.slice(0,1)}}</span>
+            <b><em>{{v.author}}</em> {{v.date+' '+v.time}}</b>
+            <strong>{{v.intro}}</strong>
+        </li>
+        {{/each}}
+    </script>
+
+    <script type="text/html" id="attention_news">
+        {{each data v i}}
+    <li><a href="./article.html?id={{v.id}}">{{v.intro}}</a></li>
+    {{/each}}
+    </script>
+
+    <script type="text/html" id="latest">
+
+        {{each data v i}}
+        <div class="common_news_list">
+            <a href="./article.html?id={{v.id}}" class="list_pic"><img src="{{v.cover}}" alt=""></a>
+            <h4><a href="./article.html?id={{v.id}}">{{v.title}}</a></h4>
+            <p>{{v.content}}
+            </p>
+            <div class="new_info">
+                <span>标签：{{v.category}}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;阅读( {{v.read}}
+                    )&nbsp;&nbsp;&nbsp;<i class="fa fa-commenting"></i>&nbsp;评论( {{v.comments}} )</span>
+                <b>发布于 {{v.date}}</b>
+            </div>
+        </div>
+        {{/each}}
+    </script>
 </body>
 
 </html>
