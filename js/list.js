@@ -99,5 +99,5 @@ $(function () {
     }
     // 7.4 跳转到列表页并将关键词传过去
     window.location.href = './list.html?search=' + txtValue
-  })
+  });
 })
